@@ -6,15 +6,13 @@
 /*   By: gueberso <gueberso@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 21:11:31 by gueberso          #+#    #+#             */
-/*   Updated: 2025/03/27 21:21:11 by gueberso         ###   ########.fr       */
+/*   Updated: 2025/03/27 21:47:38 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
-# define TEST "test\n"
-
-void	util(void);
+void	util(int param);
 
 #endif

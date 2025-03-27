@@ -90,13 +90,10 @@ clean:
 .PHONY: fclean
 fclean: clean
 	@$(RM) $(RMDIR) $(NAME) $(BUILD_DIR)
-	@echo "$(RED_BOLD)✓ $(NAME) is fully cleaned!$(RESETC)"
+	@echo "$(RED_BOLD)✓ $(NAME) is fully cleaned$(RESETC)"
 
 .PHONY: re
 re: fclean all
-
-.PHONY: FORCE
-FORCE:
 
 .SILENT: clean fclean
 

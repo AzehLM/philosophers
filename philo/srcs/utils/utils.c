@@ -6,15 +6,16 @@
 /*   By: gueberso <gueberso@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 21:12:53 by gueberso          #+#    #+#             */
-/*   Updated: 2025/03/27 21:13:46 by gueberso         ###   ########.fr       */
+/*   Updated: 2025/03/27 21:49:07 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
 #include <stdio.h>
 #include <unistd.h>
 
-void	util(void)
+#include "philo.h"
+
+void	util(int param)
 {
-	dprintf(STDERR_FILENO, TEST);
+	dprintf(STDERR_FILENO, "%d\n", param - 1);
 }

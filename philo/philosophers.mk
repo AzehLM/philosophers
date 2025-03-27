@@ -4,10 +4,10 @@ override SRCS		= $(addprefix $(SRCSDIR), $(SRC))
 override TESTDIR	:= test/
 override UTILSDIR	:= utils/
 
-SRC += $(addprefix $(TESTDIR), $(addsuffix .c, $(TESTSRC)))
+SRC	+= $(addsuffix .c, $(MAIN))
 
-override TESTSRC	:= \
-	test \
+override MAIN		:= \
+	philosophers \
 
 SRC += $(addprefix $(UTILSDIR), $(addsuffix .c, $(UTILSSRC)))
 
