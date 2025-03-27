@@ -20,13 +20,11 @@ jobs:
       - name: Build project
         run: make
 
-jobs:
-  norminette:
+  norminette_job:
     runs-on: ubuntu-latest
-
+    name: norminette
     steps:
-      - name: norminette
-      - uses: actions/checkout@v3
-      - uses: alexandregv/norminette-action@v3
-        with:
-          flags: '.'
+    - uses: actions/checkout@v2
+    - uses: alexandregv/norminette-action@v3
+      with:
+        flags: '.'
