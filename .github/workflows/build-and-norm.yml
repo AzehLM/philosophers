@@ -18,7 +18,7 @@ jobs:
           sudo apt-get install -y build-essential
 
       - name: Build project
-        run: make
+        run: make -C philo/
 
   norminette:
     runs-on: ubuntu-latest
