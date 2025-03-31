@@ -54,6 +54,8 @@ init:
 .PHONY: all
 all: init $(NAME)
 
+# -lpthread  -> flag a rajouter a la compil ?
+
 $(NAME): Makefile $(OBJS)
 	@$(CC) $(CFLAGS) $(CPPFLAGS) -o $(NAME) $(OBJS)
 	@echo "\n$(GREEN_BOLD)✓ $(NAME) is ready $(RESETC)\n"
