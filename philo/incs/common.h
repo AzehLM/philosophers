@@ -16,4 +16,14 @@
 # define THINKING	"%d %d is thinkink\n"
 # define DIED		"%d %d died\n"
 
+# define MISS_ARGS "Missing arguments.\n"
+# define TOO_MANY_ARGS "Too many arguments.\n"
+
+# define USAGE "Usage: "
+# define USAGE_1 "./philo [number_of_philosophers] [time_to_die] [time_to_eat]"
+# define USAGE_2 \
+	"./philo [number_of_philosophers]\
+	[time_to_die] [time_to_eat] [number_of_times_each_philosopher_must_eat]"
+
+
 #endif
