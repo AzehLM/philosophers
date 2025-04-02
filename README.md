@@ -12,6 +12,7 @@
 - [Posix thread (pthread) libraries](https://www.cs.cmu.edu/afs/cs/academic/class/15492-f07/www/pthreads.html#BASICS)
 - [POSIX Threads - Systemes multi-taches - bien-programmer](https://www.bien-programmer.fr/pthreads.htm)
 - [Posix Threads in OS - Geekforgeeks](https://www.geeksforgeeks.org/posix-threads-in-os/)
+- [Dining philosophers problem - Wikipedia](https://en.wikipedia.org/wiki/Dining_philosophers_problem)
 
 #### Books
 - [Programming with POSIX threads](https://www.google.fr/books/edition/Programming_with_POSIX_Threads/_xvnuFzo7q0C?hl=fr&gbpv=0)
@@ -28,3 +29,16 @@ pas les deux en meme temps
 pour les leaks autres flags normaux
 
 bonus: flags pour fork
+
+
+### Project overview:
+
+- One or more philo at the table
+  - **One** fork for **each** philo at the table
+- 3 states : eating, thinking, sleeping
+- Needs **two** forks to eat
+- **State order:** eating -> sleeping -> thinking.
+- If a philosophers dies of starvation, the program stops.
+- Philosophers can't communicate **so** they **don't have** information about each others **states**.
+
+
