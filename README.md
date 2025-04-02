@@ -42,3 +42,9 @@ bonus: flags pour fork
 - Philosophers can't communicate **so** they **don't have** information about each others **states**.
 
 
+
+### Parsing errors
+
+- nombres d'arguments different de 4 ou 5
+  - si arg < 4 message specifique; si > 5 message speficique
+  - si 
