@@ -13,6 +13,9 @@
 - [POSIX Threads - Systemes multi-taches - bien-programmer](https://www.bien-programmer.fr/pthreads.htm)
 - [Posix Threads in OS - Geekforgeeks](https://www.geeksforgeeks.org/posix-threads-in-os/)
 - [Dining philosophers problem - Wikipedia](https://en.wikipedia.org/wiki/Dining_philosophers_problem)
+- [Philosophers 42 Guide - “The Dining Philosophers Problem”](https://medium.com/@ruinadd/philosophers-42-guide-the-dining-philosophers-problem-893a24bc0fe2)
+- [42PhilosophersHelper](https://github.com/AbdallahZerfaoui/42PhilosophersHelper)
+
 
 #### Books
 - [Programming with POSIX threads](https://www.google.fr/books/edition/Programming_with_POSIX_Threads/_xvnuFzo7q0C?hl=fr&gbpv=0)
@@ -21,15 +24,13 @@
 
 ---
 
+#### Valgrind tools
 
-valgrind --tool=helgrind --tool=drd
-
-pas les deux en meme temps
-
-pour les leaks autres flags normaux
-
-bonus: flags pour fork
-
+- `valgrind --tool=helgrind`
+- `valgrind --tool=drd`
+- A utilisé l'un apres l'autre
+- `valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --show-mismatched-frees=yes`
+- rajouter `--trace-children=yes` si je fais les bonus
 
 ### Project overview:
 
@@ -41,10 +42,8 @@ bonus: flags pour fork
 - If a philosophers dies of starvation, the program stops.
 - Philosophers can't communicate **so** they **don't have** information about each others **states**.
 
-
-
 ### Parsing errors
 
 - nombres d'arguments different de 4 ou 5
   - si arg < 4 message specifique; si > 5 message speficique
-  - si 
+  - si
