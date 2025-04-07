@@ -75,4 +75,4 @@ test.mk
 *callgrind*
 *output*
 .vscode
-philosophers
+philo
