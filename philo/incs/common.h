@@ -16,7 +16,7 @@
 # define THINKING	"%d %d is thinkink\n"
 # define DIED		"%d %d died\n"
 
-# define MISS_ARGS "Missing arguments.\n"
+# define MISSING_ARGS "Missing arguments.\n"
 # define TOO_MANY_ARGS "Too many arguments.\n"
 
 # define USAGE "Usage: "
