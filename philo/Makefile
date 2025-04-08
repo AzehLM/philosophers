@@ -1,4 +1,4 @@
-NAME	:= philo
+NAME	:= philosophers #RENAME FOR PHILO
 
 include philosophers.mk
 
