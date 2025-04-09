@@ -4,10 +4,6 @@
 
 #include "philo.h"
 
-/**
- * Recheck dans la struct mais tv_sec = secondes, tv_usec = microsecondes en PLUS
- *
- */
 long long	get_time(void)
 {
 	struct timeval	tv;
@@ -16,10 +12,6 @@ long long	get_time(void)
 	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
 }
 
-/**
- * Meilleure attente, pas possible de ctrl + d
- * Mon timer c'est la boucle, on sort quand on a attendu le temps voulu
- */
 void	usleep_enhanced(long long ms)
 {
 	long long	start;
@@ -31,6 +23,36 @@ void	usleep_enhanced(long long ms)
 		elapsed = get_time() - start;
 		if (elapsed >= ms)
 			break ;
-		usleep(500);
+		usleep(100);
 	}
+}
+
+void	cleanup(t_data *data)
+{
+	int	i;
+
+	if (data == NULL)
+		return ;
+	if (data->forks != NULL)
+	{
+		i = 0;
+		while (i < data->nb_philos)
+		{
+			pthread_mutex_destroy(&data->forks[i].gatekeeper);
+			i++;
+		}
+		free (data->forks);
+	}
+	if (data->philo != NULL)
+	{
+		i = 0;
+		while (i < data->nb_philos)
+		{
+			pthread_mutex_destroy(&data->philo[i].eater_mutex);
+			i++;
+		}
+		free (data->philo);
+	}
+	// destroy le mutex de print ?
+	// meme chose pour le moniteur de la simulation
 }
