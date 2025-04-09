@@ -30,7 +30,7 @@ pour les leaks autres flags normaux
 
 bonus: flags pour fork
 
-
+****
 ### Project overview:
 
 - One or more philo at the table
@@ -42,3 +42,21 @@ bonus: flags pour fork
 - Philosophers can't communicate **so** they **don't have** information about each others **states**.
 
 
+
+
+
+
+---
+
+
+### Studies
+
+- Les threads d'un meme processus partagent:
+  - Les instructions du process en cours
+  - La plupart des données (lesquels ne partagent-ils pas ?)
+  - les fds
+  - les signaux
+  - le dossier courant
+- Les threads ne partagent pas:
+  - le meme ID (comme les process enfant, chaqu'un a son pthread_id)
+  - les pointeurs sur la stack
