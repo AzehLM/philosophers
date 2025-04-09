@@ -60,3 +60,8 @@ bonus: flags pour fork
 - Les threads ne partagent pas:
   - le meme ID (comme les process enfant, chaqu'un a son pthread_id)
   - les pointeurs sur la stack
+
+
+### Mutex supplementaire
+
+- De meme que pour l'etat de la fourchette, on va avoir un mutex pour ecrire et un mutex pour l'etat global de la simulation
