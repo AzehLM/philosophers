@@ -60,7 +60,7 @@ static int	check_params_validity(char **av, t_data *data)
 		return (-1);
 	if (data->nb_philos <= 0 \
 		|| data->tt_die <= 0 || data->tt_eat <= 0 \
-		|| data->tt_sleep <= 0 || data->nb_meal < 0)
+		|| data->tt_sleep <= 0 || (av[5] && data->nb_meal < 0))
 	{
 		printf(OOR_ARGS);
 		return (-1);
