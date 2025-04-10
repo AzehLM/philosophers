@@ -1,20 +1,23 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   philosophers.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gueberso <gueberso@student.42lyon.fr>      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/27 21:41:26 by gueberso          #+#    #+#             */
-/*   Updated: 2025/03/27 21:47:07 by gueberso         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include <string.h>
 
 #include "philo.h"
 
 int	main(int ac, char **av)
 {
-	(void) av;
-	util(ac);
+	t_data	data;
+
+	memset(&data, 0, sizeof(t_data));
+	if (parser(ac, av, &data) == -1)
+		return (-1);
+	if (init_simulation(&data) == -1)
+		return (-1);
+	// if (init_threads(&data) == -1)
+	// {
+	// 	cleanup(&data);
+	// 	return (-1);
+	// }
+	// init thread/mutexes
+	// routine ? simulation ? pas compris encore ca
+	cleanup(&data);
 	return (0);
 }

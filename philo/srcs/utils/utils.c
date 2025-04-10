@@ -1,21 +1,59 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gueberso <gueberso@student.42lyon.fr>      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/27 21:12:53 by gueberso          #+#    #+#             */
-/*   Updated: 2025/03/27 21:49:07 by gueberso         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include <stdio.h>
+#include <stdlib.h>
+#include <sys/time.h>
 #include <unistd.h>
 
 #include "philo.h"
 
-void	util(int param)
+long long	get_time(void)
 {
-	dprintf(STDERR_FILENO, "%d\n", param - 1);
+	struct timeval	tv;
+
+	gettimeofday(&tv, NULL);
+	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
+}
+
+void	usleep_enhanced(long long ms)
+{
+	long long	start;
+	long long	elapsed;
+
+	start = get_time();
+	while (1)
+	{
+		elapsed = get_time() - start;
+		if (elapsed >= ms)
+			break ;
+		usleep(100);
+	}
+}
+
+void	cleanup(t_data *data)
+{
+	int	i;
+
+	if (data == NULL)
+		return ;
+	if (data->forks != NULL)
+	{
+		i = 0;
+		while (i < data->nb_philos)
+		{
+			pthread_mutex_destroy(&data->forks[i].gatekeeper);
+			i++;
+		}
+		free (data->forks);
+	}
+	if (data->philo != NULL)
+	{
+		i = 0;
+		while (i < data->nb_philos)
+		{
+			pthread_mutex_destroy(&data->philo[i].eater_mutex);
+			i++;
+		}
+		free (data->philo);
+	}
+	// destroy le mutex de print ?
+	// meme chose pour le moniteur de la simulation
 }
