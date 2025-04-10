@@ -28,14 +28,16 @@ typedef struct s_data
 	bool			running;
 	int				nb_meal;
 	int				nb_philos;
+	int				printing_state;
+	int				sim_state;
 	int				tt_die;
 	int				tt_eat;
 	int				tt_sleep;
 	long long		start;
-	t_philo			*philo;
-	t_fork			*forks;
 	pthread_mutex_t	mutex_printing;
-	pthread_mutex_t	sim_state;
+	pthread_mutex_t	mutex_sim_state;
+	t_fork			*forks;
+	t_philo			*philo;
 }	t_data;
 
 int			parser(int ac, char **av, t_data *data);
