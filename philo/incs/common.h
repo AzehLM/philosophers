@@ -20,7 +20,7 @@
 # define TOO_MANY_ARGS "Error: Too many arguments.\n"
 # define LITERAL_ARGS "Error: An argument contains literal character(s).\n"
 # define OOR_ARGS "Error: An argument contains an out of range number.\n"
-# define LEAVE_TABLE "Philosophers doesn't have to eat, the left the table\n"
+# define LEAVE_TABLE "Philosophers don't have to eat, they left the table.\n"
 # define USAGE "Usage: "
 # define USAGE_1 "./philo [number_of_philosophers] [time_to_die] [time_to_eat] [time_to_sleep]"
 # define USAGE_2 \
