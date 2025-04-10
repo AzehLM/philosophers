@@ -65,6 +65,11 @@ static int	check_params_validity(char **av, t_data *data)
 		printf(OOR_ARGS);
 		return (-1);
 	}
+	if (av[5] && data->nb_meal == 0)
+	{
+		printf(LEAVE_TABLE);
+		return (-1);
+	}
 	return (0);
 }
 
@@ -85,7 +90,7 @@ int	parser(int ac, char **av, t_data *data)
 	if (ac == 6)
 		data->nb_meal = atoi_strict(av[5]);
 	else
-		data->nb_meal = 0;
+		data->nb_meal = -1;
 	if (check_params_validity(av, data) == -1)
 		return (-1);
 	return (0);
