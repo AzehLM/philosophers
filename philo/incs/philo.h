@@ -44,7 +44,6 @@ long long	get_time(void);
 
 void		cleanup(t_data *data);
 
-
-int			init_data(t_data *data);
+int			init_simulation(t_data *data);
 
 #endif

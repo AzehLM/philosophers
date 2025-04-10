@@ -4,6 +4,12 @@
 #include "philo.h"
 #include "common.h"
 
+static int	init_data_mutexes(t_data *data);
+static int	init_data(t_data *data);
+static int	init_forks(t_data *data);
+static int	init_philo(t_data *data);
+
+
 int	init_simulation(t_data *data)
 {
 	if (init_data(data) == -1)
@@ -18,9 +24,10 @@ int	init_simulation(t_data *data)
 		// free && cleanup data && FORKS
 		return (-1);
 	}
+	return (0);
 }
 
-int	init_data(t_data *data)
+static int	init_data(t_data *data)
 {
 	data->running = true;
 	data->start = get_time();
@@ -44,7 +51,7 @@ int	init_data(t_data *data)
 	return (0);
 }
 
-int	init_mutexes(t_data *data)
+static int	init_data_mutexes(t_data *data)
 {
 	if (pthread_mutex_init(&data->mutex_printing, NULL) != 0)
 		return (-1);
@@ -56,7 +63,7 @@ int	init_mutexes(t_data *data)
 	return (0);
 }
 
-int	init_forks(t_data *data)
+static int	init_forks(t_data *data)
 {
 	int	i;
 
@@ -81,7 +88,7 @@ int	init_forks(t_data *data)
 	return (0);
 }
 
-int	init_philo(t_data *data)
+static int	init_philo(t_data *data)
 {
 	int	i;
 
@@ -89,10 +96,10 @@ int	init_philo(t_data *data)
 	while (i < data->nb_philos)
 	{
 		data->philo[i].l_fork = &data->forks[i];
-		data->philo[i].r_fork = &data->forks[/* which one*/];
+		data->philo[i].r_fork = &data->forks[i + 1/* random value for now but for real: WHICH ONE*/];
 		data->philo[i].id = i + 1;
 		data->philo[i].eat_counter = 0;
-		data->philo[i].data = &data;
+		data->philo[i].data = data;
 		if (pthread_mutex_init(&data->philo[i].eater_mutex, NULL) != 0)
 		{
 			i--;
