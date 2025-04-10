@@ -18,4 +18,5 @@ override UTILSSRC	:= \
 SRC += $(addprefix $(INITDIR), $(addsuffix .c, $(INITSRC)))
 
 override INITSRC	:= \
+	initialization \
 	parser \
