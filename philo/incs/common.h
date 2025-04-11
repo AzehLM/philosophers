@@ -25,9 +25,4 @@
 # define FREE 0
 # define TAKEN 1
 
-# define CAN_BE_DESTROYED 0
-# define CANNOT_BE_DESTROYED 1
-
-# define DATA 0
-
 #endif
