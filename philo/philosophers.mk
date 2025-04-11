@@ -13,6 +13,7 @@ override MAIN		:= \
 SRC += $(addprefix $(UTILSDIR), $(addsuffix .c, $(UTILSSRC)))
 
 override UTILSSRC	:= \
+	cleanup \
 	utils \
 
 SRC += $(addprefix $(INITDIR), $(addsuffix .c, $(INITSRC)))

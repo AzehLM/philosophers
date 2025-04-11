@@ -3,6 +3,7 @@
 #include <sys/time.h>
 #include <unistd.h>
 
+#include "common.h"
 #include "philo.h"
 
 long long	get_time(void)
@@ -26,34 +27,4 @@ void	usleep_enhanced(long long ms)
 			break ;
 		usleep(100);
 	}
-}
-
-void	cleanup(t_data *data)
-{
-	int	i;
-
-	if (data == NULL)
-		return ;
-	if (data->forks != NULL)
-	{
-		i = 0;
-		while (i < data->nb_philos)
-		{
-			pthread_mutex_destroy(&data->forks[i].gatekeeper);
-			i++;
-		}
-		free (data->forks);
-	}
-	if (data->philo != NULL)
-	{
-		i = 0;
-		while (i < data->nb_philos)
-		{
-			pthread_mutex_destroy(&data->philo[i].eater_mutex);
-			i++;
-		}
-		free (data->philo);
-	}
-	// destroy le mutex de print ?
-	// meme chose pour le moniteur de la simulation
 }

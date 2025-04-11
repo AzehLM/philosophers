@@ -21,11 +21,6 @@
 # define LITERAL_ARGS "Error: An argument contains literal character(s).\n"
 # define OOR_ARGS "Error: An argument contains an out of range number.\n"
 # define LEAVE_TABLE "Philosophers don't have to eat, they left the table.\n"
-# define USAGE "Usage: "
-# define USAGE_1 "./philo [number_of_philosophers] [time_to_die] [time_to_eat] [time_to_sleep]"
-# define USAGE_2 \
-	"./philo [number_of_philosophers]\
-	[time_to_die] [time_to_eat] [time_to_sleep][number_of_times_each_philosopher_must_eat]"
 
 # define FREE 0
 # define TAKEN 1
