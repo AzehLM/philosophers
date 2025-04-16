@@ -6,7 +6,7 @@
 #include "common.h"
 #include "philo.h"
 
-long long	get_time(void)
+time_t	get_time(void)
 {
 	struct timeval	tv;
 
@@ -14,10 +14,10 @@ long long	get_time(void)
 	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
 }
 
-void	usleep_enhanced(long long ms)
+void	usleep_enhanced(time_t ms)
 {
-	long long	start;
-	long long	elapsed;
+	time_t	start;
+	time_t	elapsed;
 
 	start = get_time();
 	while (1)
@@ -27,4 +27,19 @@ void	usleep_enhanced(long long ms)
 			break ;
 		usleep(100);
 	}
+}
+
+void print_status(t_philo *philo, char *status)
+{
+	time_t	current_time;
+
+	pthread_mutex_lock(&philo->data->mutex_printing);
+	pthread_mutex_lock(&philo->data->mutex_sim_state);
+	if (philo->data->sim_state == SIM_ON)
+	{
+		current_time = get_time() - philo->data->start;
+		printf("%ld %d %s\n", current_time, philo->id, status);
+	}
+	pthread_mutex_unlock(&philo->data->mutex_sim_state);
+	pthread_mutex_unlock(&philo->data->mutex_printing);
 }

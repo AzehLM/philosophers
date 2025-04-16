@@ -10,8 +10,10 @@
 # define WHITE_BOLD	"\001\033[1;37m\002"
 # define YELLOW		"\001\033[1;33m\002"
 
+# define RESET      "\001\033[0m\002"
+
 # define TOOK_FORK	"%d %d has taken a fork"	// with first identifier
-# define EATING		"%d %d is eating\n"			// timestamp_in_ms and second
+# define EATING		"%d %d is eating"			// timestamp_in_ms and second
 # define SLEEPING	"%d %d is sleeping\n"		// identifier philosopher ID
 # define THINKING	"%d %d is thinkink\n"
 # define DIED		"%d %d died\n"
@@ -22,7 +24,10 @@
 # define OOR_ARGS "Error: An argument contains an out of range number.\n"
 # define LEAVE_TABLE "Philosophers don't have to eat, they left the table.\n"
 
-# define FREE 0
-# define TAKEN 1
+# define AVAILABLE 0
+# define UNAVAILABLE 1
+
+# define SIM_ON 0
+# define SIM_OFF 1
 
 #endif

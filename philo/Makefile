@@ -1,4 +1,4 @@
-NAME	:= philosophers #RENAME FOR PHILO
+NAME	:= philo
 
 include philosophers.mk
 
@@ -53,8 +53,6 @@ init:
 
 .PHONY: all
 all: init $(NAME)
-
-# -lpthread  -> flag a rajouter a la compil ?
 
 $(NAME): Makefile $(OBJS)
 	@$(CC) $(CFLAGS) $(CPPFLAGS) -o $(NAME) $(OBJS)

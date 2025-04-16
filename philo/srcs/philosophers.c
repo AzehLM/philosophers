@@ -12,13 +12,12 @@ int	main(int ac, char **av)
 		return (EXIT_FAILURE);
 	if (init_simulation(&data) == -1)
 		return (EXIT_FAILURE);
-	// if (init_threads(&data) == -1)
-	// {
-	// 	cleanup(&data);
-	// 	return (-1);
-	// }
-	// init thread/mutexes
-	// routine ? simulation ? pas compris encore ca
+	if (simulation_start(&data) == -1)
+	{
+		cleanup(&data);
+		return (EXIT_FAILURE);
+	}
+	monitor_philos(&data);
 	cleanup(&data);
 	return (EXIT_SUCCESS);
 }
