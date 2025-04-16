@@ -1,5 +1,18 @@
-#include <unistd.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   monitoring.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gueberso <gueberso@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/16 08:15:49 by gueberso          #+#    #+#             */
+/*   Updated: 2025/04/16 08:19:39 by gueberso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdbool.h>
 #include <stdio.h>
+#include <unistd.h>
 
 #include "common.h"
 #include "philo.h"
@@ -86,16 +99,15 @@ int	monitor_philos(t_data *data)
 	{
 		if (data->nb_meal != -1 && check_all_done(data))
 			break ;
-		i = 0;
+		i = -1;
 		should_stop = 0;
-		while (i < data->nb_philos && !should_stop)
+		while (++i < data->nb_philos && !should_stop)
 		{
 			if (check_sim_status(data, i))
 			{
 				should_stop = 1;
 				break ;
 			}
-			i++;
 		}
 		if (should_stop)
 			break ;

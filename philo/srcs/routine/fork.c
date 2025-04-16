@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fork.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gueberso <gueberso@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/16 08:15:58 by gueberso          #+#    #+#             */
+/*   Updated: 2025/04/16 08:15:59 by gueberso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <unistd.h>
 
@@ -35,7 +47,6 @@ static int	should_try_again(t_philo *philo)
 	pthread_mutex_lock(&philo->eater_mutex);
 	time_since_meal = current_time - philo->last_time_eaten;
 	pthread_mutex_unlock(&philo->eater_mutex);
-
 	if (time_since_meal > philo->data->tt_die / 2)
 		return (50);
 	else if (time_since_meal > philo->data->tt_die / 4)

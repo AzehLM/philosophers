@@ -1,8 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gueberso <gueberso@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/16 08:18:01 by gueberso          #+#    #+#             */
+/*   Updated: 2025/04/16 08:18:57 by gueberso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PHILO_H
 # define PHILO_H
 
 # include <pthread.h>
-# include <stdbool.h>
 
 typedef struct s_fork
 {
@@ -40,30 +51,23 @@ typedef struct s_data
 	t_philo			*philo;
 }	t_data;
 
-int			parser(int ac, char **av, t_data *data);
-
-void	print_status(t_philo *philo, char *status);
-
-time_t	get_time(void);
-
-void	usleep_enhanced(time_t ms);
-int			simulation_start(t_data *data);
-
-void		cleanup(t_data *data);
-
-int			init_simulation(t_data *data);
-int			check_simulation_state(t_data *data);
-
-int			check_sim_has_to_end(t_data *data);
-
-
 void		*routine(void *arg);
 
-int		take_fork(t_philo *philo);
+void		cleanup(t_data *data);
+void		print_status(t_philo *philo, char *status);
+void		usleep_enhanced(time_t ms);
+void		eating(t_philo *philo);
+void		release_forks(t_philo *philo);
+void		sleep_think(t_philo *philo);
 
-void    release_forks(t_philo *philo);
-void    eating(t_philo *philo);
-void    sleep_think(t_philo *philo);
-int     monitor_philos(t_data *data);
+int			check_sim_has_to_end(t_data *data);
+int			check_simulation_state(t_data *data);
+int			init_simulation(t_data *data);
+int			parser(int ac, char **av, t_data *data);
+int			simulation_start(t_data *data);
+int			take_fork(t_philo *philo);
+int			monitor_philos(t_data *data);
+
+time_t		get_time(void);
 
 #endif

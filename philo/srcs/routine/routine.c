@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   routine.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gueberso <gueberso@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/16 08:16:03 by gueberso          #+#    #+#             */
+/*   Updated: 2025/04/16 08:16:04 by gueberso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 #include <stdio.h>
 
@@ -34,7 +46,6 @@ static void	initial_stagger(t_philo *philo)
 		delay = 1;
 	else
 		delay = 0;
-
 	if (delay > 0)
 		usleep_enhanced(delay);
 }
