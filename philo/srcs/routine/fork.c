@@ -6,7 +6,7 @@
 /*   By: gueberso <gueberso@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 08:15:58 by gueberso          #+#    #+#             */
-/*   Updated: 2025/04/16 08:15:59 by gueberso         ###   ########.fr       */
+/*   Updated: 2025/04/16 19:03:31 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,21 @@ static int	should_try_again(t_philo *philo)
 	pthread_mutex_lock(&philo->eater_mutex);
 	time_since_meal = current_time - philo->last_time_eaten;
 	pthread_mutex_unlock(&philo->eater_mutex);
-	if (time_since_meal > philo->data->tt_die / 2)
-		return (50);
-	else if (time_since_meal > philo->data->tt_die / 4)
-		return (250);
-	return (500);
+	if (philo->data->tt_eat > philo->data->tt_sleep)
+	{
+		if (time_since_meal > philo->data->tt_die * 0.85)
+				return (20);
+		else if (time_since_meal > philo->data->tt_die * 0.29)
+			return (philo->data->tt_eat);
+	}
+	else
+	{
+		if (time_since_meal > philo->data->tt_die * 0.85)
+			return (10);
+		else if (time_since_meal > philo->data->tt_die * 0.40)
+			return (philo->data->tt_eat / 3);
+	}
+	return (1000);
 }
 
 static int	try_take_first_fork(t_fork *fork)
