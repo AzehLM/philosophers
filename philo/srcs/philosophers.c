@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philosophers.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gueberso <gueberso@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/16 08:16:11 by gueberso          #+#    #+#             */
+/*   Updated: 2025/04/16 08:16:12 by gueberso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include <string.h>
 
@@ -12,13 +24,12 @@ int	main(int ac, char **av)
 		return (EXIT_FAILURE);
 	if (init_simulation(&data) == -1)
 		return (EXIT_FAILURE);
-	// if (init_threads(&data) == -1)
-	// {
-	// 	cleanup(&data);
-	// 	return (-1);
-	// }
-	// init thread/mutexes
-	// routine ? simulation ? pas compris encore ca
+	if (simulation_start(&data) == -1)
+	{
+		cleanup(&data);
+		return (EXIT_FAILURE);
+	}
+	monitor_philos(&data);
 	cleanup(&data);
 	return (EXIT_SUCCESS);
 }

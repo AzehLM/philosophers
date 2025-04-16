@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   initialization.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gueberso <gueberso@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/16 08:15:52 by gueberso          #+#    #+#             */
+/*   Updated: 2025/04/16 08:15:53 by gueberso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <string.h>
 #include <stdlib.h>
 
@@ -28,8 +40,6 @@ int	init_simulation(t_data *data)
 
 static int	init_data(t_data *data)
 {
-	data->running = true;
-	data->start = get_time();
 	data->philo = malloc(sizeof(t_philo) * data->nb_philos);
 	if (data->philo == NULL)
 		return (-1);
@@ -70,7 +80,7 @@ static int	init_forks(t_data *data)
 	while (i < data->nb_philos)
 	{
 		data->forks[i].id = i + 1;
-		data->forks[i].status = FREE;
+		data->forks[i].status = AVAILABLE;
 		if (pthread_mutex_init(&data->forks[i].gatekeeper, NULL) != 0)
 		{
 			i--;
@@ -100,6 +110,7 @@ static int	init_philo(t_data *data)
 		data->philo[i].r_fork = &data->forks[(i + 1) % data->nb_philos];
 		data->philo[i].id = i + 1;
 		data->philo[i].eat_counter = 0;
+		data->philo[i].priority = 0;
 		data->philo[i].data = data;
 		if (pthread_mutex_init(&data->philo[i].eater_mutex, NULL) != 0)
 		{
