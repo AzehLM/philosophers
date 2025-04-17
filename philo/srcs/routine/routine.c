@@ -6,7 +6,7 @@
 /*   By: gueberso <gueberso@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 08:16:03 by gueberso          #+#    #+#             */
-/*   Updated: 2025/04/16 08:16:04 by gueberso         ###   ########.fr       */
+/*   Updated: 2025/04/17 18:23:44 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	*routine(void *arg)
 	initial_stagger(philo);
 	while (check_simulation_state(philo->data) == SIM_ON)
 	{
+		usleep_enhanced(1);
 		if (check_meal_counter(philo) == -1)
 			break ;
 		eating(philo);
