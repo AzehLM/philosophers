@@ -6,13 +6,34 @@
 /*   By: gueberso <gueberso@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 08:16:07 by gueberso          #+#    #+#             */
-/*   Updated: 2025/04/16 08:16:08 by gueberso         ###   ########.fr       */
+/*   Updated: 2025/04/19 12:44:30 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stdio.h>
 
+#include "common.h"
 #include "philo.h"
+
+void	join_threads(t_data *data)
+{
+	int	i;
+	int	join_result;
+
+	i = 0;
+	join_result = 0;
+	while (i < data->nb_philos)
+	{
+		join_result = pthread_join(data->philo[i].thread, NULL);
+		if (join_result != 0)
+		{
+			printf(JOIN_ERROR THREAD_ID_ERROR, data->philo[i].id, join_result);
+			return ;
+		}
+		i++;
+	}
+}
 
 static void	cleanup_forks(t_data *data)
 {

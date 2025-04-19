@@ -6,7 +6,7 @@
 /*   By: gueberso <gueberso@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 08:15:58 by gueberso          #+#    #+#             */
-/*   Updated: 2025/04/17 10:32:03 by gueberso         ###   ########.fr       */
+/*   Updated: 2025/04/19 12:15:22 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,32 +36,6 @@ void	release_forks(t_philo *philo)
 		philo->l_fork->status = AVAILABLE;
 		pthread_mutex_unlock(&philo->l_fork->gatekeeper);
 	}
-}
-
-static int	should_try_again(t_philo *philo)
-{
-	time_t	current_time;
-	time_t	time_since_meal;
-
-	current_time = get_time();
-	pthread_mutex_lock(&philo->eater_mutex);
-	time_since_meal = current_time - philo->last_time_eaten;
-	pthread_mutex_unlock(&philo->eater_mutex);
-	if (philo->data->tt_eat > philo->data->tt_sleep)
-	{
-		if (time_since_meal > philo->data->tt_die * 0.85)
-				return (20);
-		else if (time_since_meal > philo->data->tt_die * 0.29)
-			return (philo->data->tt_eat);
-	}
-	else
-	{
-		if (time_since_meal > philo->data->tt_die * 0.85)
-			return (10);
-		else if (time_since_meal > philo->data->tt_die * 0.40)
-			return (philo->data->tt_eat / 3);
-	}
-	return (1000);
 }
 
 static int	try_take_first_fork(t_fork *fork)
@@ -122,7 +96,7 @@ int	take_fork(t_philo *philo)
 		if (try_take_first_fork(first))
 			if (try_take_second_fork(philo, first, second))
 				return (0);
-		usleep(should_try_again(philo));
+		usleep(500);
 	}
 	return (-1);
 }

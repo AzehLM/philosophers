@@ -6,7 +6,7 @@
 /*   By: gueberso <gueberso@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 08:15:49 by gueberso          #+#    #+#             */
-/*   Updated: 2025/04/16 08:19:39 by gueberso         ###   ########.fr       */
+/*   Updated: 2025/04/19 10:50:42 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,6 @@ int	monitor_philos(t_data *data)
 		usleep(1000);
 	}
 	i = -1;
-	while (++i < data->nb_philos)
-		pthread_join(data->philo[i].thread, NULL);
+	join_threads(data);
 	return (0);
 }
