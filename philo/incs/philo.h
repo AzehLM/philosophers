@@ -6,7 +6,7 @@
 /*   By: gueberso <gueberso@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 08:18:01 by gueberso          #+#    #+#             */
-/*   Updated: 2025/04/16 08:18:57 by gueberso         ###   ########.fr       */
+/*   Updated: 2025/04/19 10:50:55 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void		usleep_enhanced(time_t ms);
 void		eating(t_philo *philo);
 void		release_forks(t_philo *philo);
 void		sleep_think(t_philo *philo);
+void		join_threads(t_data *data);
 
 int			check_sim_has_to_end(t_data *data);
 int			check_simulation_state(t_data *data);
