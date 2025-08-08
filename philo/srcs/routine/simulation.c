@@ -6,7 +6,7 @@
 /*   By: gueberso <gueberso@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 08:16:05 by gueberso          #+#    #+#             */
-/*   Updated: 2025/04/16 08:16:06 by gueberso         ###   ########.fr       */
+/*   Updated: 2025/08/08 11:46:25 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	check_simulation_state(t_data *data)
 	return (state);
 }
 
-int	simulation_start(t_data *data)
+bool	simulation_start(t_data *data)
 {
 	int	i;
 
@@ -35,7 +35,7 @@ int	simulation_start(t_data *data)
 		data->philo[i].last_time_eaten = data->start;
 		if (pthread_create(&data->philo[i].thread, NULL, routine, \
 														&data->philo[i]) != 0)
-			return (-1);
+			return (false);
 	}
-	return (0);
+	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: gueberso <gueberso@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 08:15:56 by gueberso          #+#    #+#             */
-/*   Updated: 2025/04/19 12:44:18 by gueberso         ###   ########.fr       */
+/*   Updated: 2025/08/08 11:56:03 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	eating(t_philo *philo)
 {
 	if (check_simulation_state(philo->data) == SIM_OFF)
 		return ;
-	if (take_fork(philo) == -1)
+	if (!take_fork(philo))
 		return ;
 	pthread_mutex_lock(&philo->eater_mutex);
 	philo->last_time_eaten = get_time();

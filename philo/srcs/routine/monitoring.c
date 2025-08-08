@@ -6,7 +6,7 @@
 /*   By: gueberso <gueberso@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 08:15:49 by gueberso          #+#    #+#             */
-/*   Updated: 2025/04/19 10:50:42 by gueberso         ###   ########.fr       */
+/*   Updated: 2025/08/08 11:47:25 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ static int	check_sim_status(t_data *data, int i)
 	return (0);
 }
 
-int	monitor_philos(t_data *data)
+void	monitor_philos(t_data *data)
 {
 	int	i;
 	int	should_stop;
@@ -115,5 +115,4 @@ int	monitor_philos(t_data *data)
 	}
 	i = -1;
 	join_threads(data);
-	return (0);
 }

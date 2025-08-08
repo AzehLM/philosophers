@@ -6,7 +6,7 @@
 /*   By: gueberso <gueberso@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 08:18:01 by gueberso          #+#    #+#             */
-/*   Updated: 2025/04/19 10:50:55 by gueberso         ###   ########.fr       */
+/*   Updated: 2025/08/08 12:00:03 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PHILO_H
 
 # include <pthread.h>
+# include <stdbool.h>
 
 typedef struct s_fork
 {
@@ -26,7 +27,6 @@ typedef struct s_philo
 {
 	int				eat_counter;
 	int				id;
-	int				priority;
 	long long		last_time_eaten;
 	pthread_mutex_t	eater_mutex;
 	pthread_t		thread;
@@ -54,20 +54,21 @@ typedef struct s_data
 void		*routine(void *arg);
 
 void		cleanup(t_data *data);
-void		print_status(t_philo *philo, char *status);
-void		usleep_enhanced(time_t ms);
 void		eating(t_philo *philo);
+void		join_threads(t_data *data);
+void		monitor_philos(t_data *data);
+void		print_status(t_philo *philo, char *status);
 void		release_forks(t_philo *philo);
 void		sleep_think(t_philo *philo);
-void		join_threads(t_data *data);
+void		usleep_enhanced(time_t ms);
 
 int			check_sim_has_to_end(t_data *data);
 int			check_simulation_state(t_data *data);
-int			init_simulation(t_data *data);
-int			parser(int ac, char **av, t_data *data);
-int			simulation_start(t_data *data);
-int			take_fork(t_philo *philo);
-int			monitor_philos(t_data *data);
+
+bool		init_simulation(t_data *data);
+bool		parser(int ac, char **av, t_data *data);
+bool		simulation_start(t_data *data);
+bool		take_fork(t_philo *philo);
 
 time_t		get_time(void);
 

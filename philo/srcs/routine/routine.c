@@ -6,7 +6,7 @@
 /*   By: gueberso <gueberso@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 08:16:03 by gueberso          #+#    #+#             */
-/*   Updated: 2025/04/19 11:57:26 by gueberso         ###   ########.fr       */
+/*   Updated: 2025/08/08 11:51:06 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,16 @@
 #include "philo.h"
 #include "common.h"
 
-int	check_meal_counter(t_philo *philo)
+bool	check_meal_counter(t_philo *philo)
 {
-	int	result;
+	bool	result;
 
 	pthread_mutex_lock(&philo->eater_mutex);
 	if (philo->data->nb_meal != -1 \
 		&& philo->eat_counter >= philo->data->nb_meal)
-		result = -1;
+		result = false;
 	else
-		result = 0;
+		result = true;
 	pthread_mutex_unlock(&philo->eater_mutex);
 	return (result);
 }
@@ -45,7 +45,7 @@ static void	initial_stagger(t_philo *philo)
 	else if (philo->id % 3 == 0)
 		delay = 1;
 	else
-		delay = 0;
+		return ;
 	if (delay > 0)
 		usleep_enhanced(delay);
 }
@@ -67,7 +67,7 @@ void	*routine(void *arg)
 	while (check_simulation_state(philo->data) == SIM_ON)
 	{
 		usleep_enhanced(1);
-		if (check_meal_counter(philo) == -1)
+		if (!check_meal_counter(philo))
 			break ;
 		eating(philo);
 		if (check_simulation_state(philo->data) == SIM_OFF)

@@ -6,7 +6,7 @@
 /*   By: gueberso <gueberso@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 08:15:54 by gueberso          #+#    #+#             */
-/*   Updated: 2025/04/16 08:15:55 by gueberso         ###   ########.fr       */
+/*   Updated: 2025/08/08 11:40:51 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static inline int	ft_isdigit(int c)
 	return (0);
 }
 
-static int	literal_check(char **av)
+static bool	literal_check(char **av)
 {
 	static int	i = 1;
 	int			j;
@@ -57,35 +57,35 @@ static int	literal_check(char **av)
 			if (ft_isdigit(av[i][j]) == 0)
 			{
 				printf(LITERAL_ARGS);
-				return (-1);
+				return (false);
 			}
 			j++;
 		}
 		i++;
 	}
-	return (0);
+	return (true);
 }
 
-static int	check_params_validity(char **av, t_data *data)
+static bool	check_params_validity(char **av, t_data *data)
 {
-	if (literal_check(av) == -1)
-		return (-1);
+	if (!literal_check(av))
+		return (false);
 	if (data->nb_philos <= 0 \
 		|| data->tt_die <= 0 || data->tt_eat <= 0 \
 		|| data->tt_sleep <= 0 || (av[5] && data->nb_meal < 0))
 	{
 		printf(OOR_ARGS);
-		return (-1);
+		return (false);
 	}
 	if (av[5] && data->nb_meal == 0)
 	{
 		printf(LEAVE_TABLE);
-		return (-1);
+		return (false);
 	}
-	return (0);
+	return (true);
 }
 
-int	parser(int ac, char **av, t_data *data)
+bool	parser(int ac, char **av, t_data *data)
 {
 	if (ac != 5 && ac != 6)
 	{
@@ -93,7 +93,7 @@ int	parser(int ac, char **av, t_data *data)
 			printf(MISSING_ARGS);
 		else
 			printf(TOO_MANY_ARGS);
-		return (-1);
+		return (false);
 	}
 	data->nb_philos = atoi_strict(av[1]);
 	data->tt_die = atoi_strict (av[2]);
@@ -103,7 +103,7 @@ int	parser(int ac, char **av, t_data *data)
 		data->nb_meal = atoi_strict(av[5]);
 	else
 		data->nb_meal = -1;
-	if (check_params_validity(av, data) == -1)
-		return (-1);
-	return (0);
+	if (!check_params_validity(av, data))
+		return (false);
+	return (true);
 }
