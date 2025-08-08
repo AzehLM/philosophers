@@ -6,7 +6,7 @@
 /*   By: gueberso <gueberso@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 08:15:58 by gueberso          #+#    #+#             */
-/*   Updated: 2025/08/08 11:54:51 by gueberso         ###   ########.fr       */
+/*   Updated: 2025/08/08 12:22:03 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ bool	take_fork(t_philo *philo)
 		if (try_take_first_fork(first))
 			if (try_take_second_fork(philo, first, second))
 				return (true);
-		usleep(500); // is it still necessary ? need to check on school computer later on
+		usleep(500);
 	}
 	return (false);
 }

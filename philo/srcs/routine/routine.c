@@ -6,7 +6,7 @@
 /*   By: gueberso <gueberso@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 08:16:03 by gueberso          #+#    #+#             */
-/*   Updated: 2025/08/08 11:51:06 by gueberso         ###   ########.fr       */
+/*   Updated: 2025/08/08 12:19:08 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,7 @@ static void	initial_stagger(t_philo *philo)
 		delay = 1;
 	else
 		return ;
-	if (delay > 0)
-		usleep_enhanced(delay);
+	usleep_enhanced(delay);
 }
 
 void	*routine(void *arg)
