@@ -11,6 +11,7 @@ DEPS		:= $(OBJS:.o=.d)
 CC			:= cc
 CFLAGS		:= -Wall -Wextra -Werror
 CPPFLAGS	:= -MMD -MP -I incs/
+LDFLAGS := -lpthread
 
 RM			:= rm -f
 RMDIR		+= -r
@@ -55,7 +56,7 @@ init:
 all: init $(NAME)
 
 $(NAME): Makefile $(OBJS)
-	@$(CC) $(CFLAGS) $(CPPFLAGS) -o $(NAME) $(OBJS)
+	@$(CC) $(CFLAGS) $(CPPFLAGS) -o $(NAME) $(OBJS) $(LDFLAGS)
 	@echo "\n$(GREEN_BOLD)✓ $(NAME) is ready $(RESETC)\n"
 
 $(BUILD_DIR)%.o: $(SRCSDIR)%.c

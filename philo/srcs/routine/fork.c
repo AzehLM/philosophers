@@ -6,7 +6,7 @@
 /*   By: gueberso <gueberso@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 08:15:58 by gueberso          #+#    #+#             */
-/*   Updated: 2025/04/19 12:15:22 by gueberso         ###   ########.fr       */
+/*   Updated: 2025/08/08 12:22:03 by gueberso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,33 +38,33 @@ void	release_forks(t_philo *philo)
 	}
 }
 
-static int	try_take_first_fork(t_fork *fork)
+static bool	try_take_first_fork(t_fork *fork)
 {
-	int	result;
+	bool	result;
 
-	result = 0;
+	result = false;
 	pthread_mutex_lock(&fork->gatekeeper);
 	if (fork->status == AVAILABLE)
 	{
 		fork->status = UNAVAILABLE;
-		result = 1;
+		result = true;
 	}
 	pthread_mutex_unlock(&fork->gatekeeper);
 	return (result);
 }
 
-static int	try_take_second_fork(t_philo *philo, t_fork *first, t_fork *second)
+static bool	try_take_second_fork(t_philo *philo, t_fork *first, t_fork *second)
 {
-	int	result;
+	bool	result;
 
-	result = 0;
+	result = false;
 	pthread_mutex_lock(&second->gatekeeper);
 	if (second->status == AVAILABLE)
 	{
 		second->status = UNAVAILABLE;
 		print_status(philo, "has taken a fork");
 		print_status(philo, "has taken a fork");
-		result = 1;
+		result = true;
 	}
 	else
 	{
@@ -76,7 +76,7 @@ static int	try_take_second_fork(t_philo *philo, t_fork *first, t_fork *second)
 	return (result);
 }
 
-int	take_fork(t_philo *philo)
+bool	take_fork(t_philo *philo)
 {
 	t_fork	*first;
 	t_fork	*second;
@@ -95,8 +95,8 @@ int	take_fork(t_philo *philo)
 	{
 		if (try_take_first_fork(first))
 			if (try_take_second_fork(philo, first, second))
-				return (0);
+				return (true);
 		usleep(500);
 	}
-	return (-1);
+	return (false);
 }
